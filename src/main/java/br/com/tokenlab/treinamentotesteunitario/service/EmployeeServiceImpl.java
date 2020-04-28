@@ -1,7 +1,7 @@
 package br.com.tokenlab.treinamentotesteunitario.service;
 
 import br.com.tokenlab.treinamentotesteunitario.dto.EmployeeDTO;
-import br.com.tokenlab.treinamentotesteunitario.repository.EmployeeRepositoy;
+import br.com.tokenlab.treinamentotesteunitario.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,17 +10,18 @@ import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    private final EmployeeRepositoy employeeRepositoy;
+    private final EmployeeRepository employeeRepository;
 
-    public EmployeeServiceImpl(EmployeeRepositoy employeeRepositoy) {
-        this.employeeRepositoy = employeeRepositoy;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
     public List<EmployeeDTO> findAllEmployees() {
-        return employeeRepositoy.findAll().stream()
+        return employeeRepository.findAll().stream()
                 .map(employee -> EmployeeDTO.builder()
                         .firstName(employee.getFirstName())
+                        .lastName(employee.getLastName())
                         .build())
                 .collect(Collectors.toList());
     }

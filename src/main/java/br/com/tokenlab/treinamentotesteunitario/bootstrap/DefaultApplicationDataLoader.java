@@ -3,7 +3,7 @@ package br.com.tokenlab.treinamentotesteunitario.bootstrap;
 import br.com.tokenlab.treinamentotesteunitario.domain.Department;
 import br.com.tokenlab.treinamentotesteunitario.domain.Employee;
 import br.com.tokenlab.treinamentotesteunitario.repository.DepartmentRepository;
-import br.com.tokenlab.treinamentotesteunitario.repository.EmployeeRepositoy;
+import br.com.tokenlab.treinamentotesteunitario.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class DefaultApplicationDataLoader implements CommandLineRunner {
 
     private final DepartmentRepository departmentRepository;
-    private final EmployeeRepositoy employeeRepositoy;
+    private final EmployeeRepository employeeRepository;
 
     @Override
     public void run(String... args) {
@@ -28,7 +28,7 @@ public class DefaultApplicationDataLoader implements CommandLineRunner {
                     .departmentName("Marketing")
                     .build());
 
-            employeeRepositoy.save(Employee
+            employeeRepository.save(Employee
                     .builder()
                     .firstName("Thiago")
                     .lastName("Silva")
@@ -36,7 +36,7 @@ public class DefaultApplicationDataLoader implements CommandLineRunner {
                     .department(marketing)
                     .build());
 
-            employeeRepositoy.save(Employee
+            employeeRepository.save(Employee
                     .builder()
                     .firstName("João")
                     .lastName("Pereira")
@@ -49,7 +49,7 @@ public class DefaultApplicationDataLoader implements CommandLineRunner {
                     .departmentName("Development")
                     .build());
 
-            employeeRepositoy.save(Employee
+            employeeRepository.save(Employee
                     .builder()
                     .firstName("Fabio")
                     .lastName("Rodrigo")
@@ -57,7 +57,7 @@ public class DefaultApplicationDataLoader implements CommandLineRunner {
                     .department(development)
                     .build());
 
-            employeeRepositoy.save(Employee
+            employeeRepository.save(Employee
                     .builder()
                     .firstName("Douglas")
                     .lastName("Rodriguez")
