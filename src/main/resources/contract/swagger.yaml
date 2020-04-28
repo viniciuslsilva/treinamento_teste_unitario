@@ -1,0 +1,157 @@
+openapi: 3.0.0
+info:
+  version: "0.1-beta"
+  title: 'Treinamento Teste Unitário - Tokenlab'
+  description: 'Contrato para os serviços do treinamento sobre testes unitários'
+tags:
+  - name: department
+    # description:
+  - name: employee
+    # description:
+
+paths:
+  '/department':
+    get:
+      tags:
+        - department
+      summary: List all department
+      # description:
+
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DepartmentDTO'
+        '400':
+          $ref: '#/components/schemas/ErrorDTO'
+
+  '/department/{departmentId}':
+    get:
+      tags:
+        - department
+      summary: List employees of a department
+      # description:
+      parameters:
+        - name: departmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: includeEmployees
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: includeLocation
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeDTO'
+        '400':
+          $ref: '#/components/schemas/ErrorDTO'
+
+
+  '/employee':
+    get:
+      tags:
+        - employee
+      summary: List all employees
+      # description:
+
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmployeeDTO'
+        '400':
+          $ref: '#/components/schemas/ErrorDTO'
+
+  '/employee/{employeeId}':
+    get:
+      tags:
+        - employee
+      summary: Find an employee
+      # description:
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeDTO'
+        '400':
+          $ref: '#/components/schemas/ErrorDTO'
+
+components:
+
+  schemas:
+    DepartmentDTO:
+      type: object
+      properties:
+        departmentId:
+          type: integer
+        departmentName:
+          type: string
+        employees:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeDTO'
+        location:
+          $ref: '#/components/schemas/LocationDTO'
+
+    EmployeeDTO:
+      type: object
+      properties:
+        employeeId:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+
+    ErrorDTO:
+      type: object
+      properties:
+        message:
+          type: string
+
+    LocationDTO:
+      type: object
+      properties:
+        streetAddress:
+          type: string
+        postalCode:
+          type: string
+        city:
+          type: string
+        stateProvince:
+          type: string
+        countryName:
+          type: string
+        countryCode:
+          type: string
+        countryRegionName:
+          type: string
