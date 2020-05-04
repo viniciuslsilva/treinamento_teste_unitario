@@ -1,5 +1,7 @@
 Repositório para treinamento sobre teste unitário ministrado para colaboladores da Tokenlab
 
+Slides com animações - https://docs.google.com/presentation/d/1a7U0xrgN0YAtm7tTQ9QU-geccbBZ_cgmAJ3SHyDOq5U/edit?usp=sharing
+
 Implementação base do dominio a ser testado obitido em https://github.com/dguduguntla/spring-jpa-lazyload
 
 
